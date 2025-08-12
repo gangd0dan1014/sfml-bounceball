@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-
+#include "Block.hpp"
 #include "Ball.hpp"
 
 int main() {
@@ -11,6 +11,7 @@ int main() {
     sf::Clock clock;
     float deltaTime;
 
+    BackGround backGround = BackGround();
     Ball ball = Ball(sf::Vector2f(1024.f, 512.f));
 
     while (window.isOpen()) {
@@ -24,8 +25,8 @@ int main() {
         }
 
         window.clear();
+        window.draw(backGround);
 
-        // 공의 위치 업데이트
         ball.updatePosition(deltaTime);
         window.draw(ball);
 

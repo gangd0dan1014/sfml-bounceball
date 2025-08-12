@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/bounceball.dir/src/Ball.cpp.o"
   "CMakeFiles/bounceball.dir/src/Ball.cpp.o.d"
+  "CMakeFiles/bounceball.dir/src/Block.cpp.o"
+  "CMakeFiles/bounceball.dir/src/Block.cpp.o.d"
   "CMakeFiles/bounceball.dir/src/main.cpp.o"
   "CMakeFiles/bounceball.dir/src/main.cpp.o.d"
   "bounceball"
