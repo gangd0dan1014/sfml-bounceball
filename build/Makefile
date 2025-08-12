@@ -129,6 +129,30 @@ bounceball/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bounceball.dir/build.make CMakeFiles/bounceball.dir/build
 .PHONY : bounceball/fast
 
+src/Block.o: src/Block.cpp.o
+.PHONY : src/Block.o
+
+# target to build an object file
+src/Block.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bounceball.dir/build.make CMakeFiles/bounceball.dir/src/Block.cpp.o
+.PHONY : src/Block.cpp.o
+
+src/Block.i: src/Block.cpp.i
+.PHONY : src/Block.i
+
+# target to preprocess a source file
+src/Block.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bounceball.dir/build.make CMakeFiles/bounceball.dir/src/Block.cpp.i
+.PHONY : src/Block.cpp.i
+
+src/Block.s: src/Block.cpp.s
+.PHONY : src/Block.s
+
+# target to generate assembly for a file
+src/Block.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bounceball.dir/build.make CMakeFiles/bounceball.dir/src/Block.cpp.s
+.PHONY : src/Block.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -162,6 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... bounceball"
+	@echo "... src/Block.o"
+	@echo "... src/Block.i"
+	@echo "... src/Block.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
