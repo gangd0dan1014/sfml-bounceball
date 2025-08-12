@@ -19,5 +19,6 @@ class Ball : public sf::Drawable, public sf::Transformable {
         void draw(sf::RenderTarget& target, sf::RenderStates states) const;
         Ball(sf::Vector2f startPosition);
 
-
+        void moveLeft(float dt);
+        void moveRight(float dt);
 };

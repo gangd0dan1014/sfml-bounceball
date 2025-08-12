@@ -1,4 +1,5 @@
 #include "Ball.hpp"
+#include "Block.hpp"
 
 Ball::Ball(sf::Vector2f startPosition) 
     : position(startPosition), initPosition(startPosition), velocity(0.f, 0.f), gravity(0.f, 490.f) {
@@ -30,6 +31,7 @@ void Ball::updatePosition(float dt) {
     velocity.y += gravity.y * dt;
     position.y += (initVelocity.y * dt) + 0.5f * dt * dt * gravity.y;
 
+
     if (position.y < 0 || position.y >= 1024.f || position.x < 0 || position.x > 2048) {
         position.x = initPosition.x;
         position.y = initPosition.y;
@@ -47,4 +49,24 @@ void Ball::updatePosition(float dt) {
 void Ball::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     states.transform *= getTransform();
     target.draw(ball, states);
+}
+
+/**
+ * @param dt 프레임 시간
+ * @brief 왼쪽으로 이동하는 함수
+ * @details 좌표만 바꾸고 실질적인 이동은 updatePosition 함수에서 이루어짐
+ */
+void Ball::moveLeft(float dt) {
+    velocity.x = -250.f;
+    position.x += dt * velocity.x;
+}
+
+/**
+ * @param dt 프레임 시간
+ * @brief 오른으로 이동하는 함수
+ * @details 좌표만 바꾸고 실질적인 이동은 updatePosition 함수에서 이루어짐
+ */
+void Ball::moveRight(float dt) {
+    velocity.x = 250.f;
+    position.x += dt * velocity.x;
 }

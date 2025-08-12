@@ -42,6 +42,7 @@ void Block::createRenderTexture() {
 
     renderTexture.display();
     sprite.setTexture(renderTexture.getTexture());
+    boundary = sprite.getGlobalBounds();
 }
 
 void Block::draw(sf::RenderTarget& target, sf::RenderStates states) const {
