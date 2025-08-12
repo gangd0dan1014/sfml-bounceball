@@ -1,3 +1,0 @@
-/home/gangd0dan/sfml-bounceball/build/CMakeFiles/bounceball.dir
-/home/gangd0dan/sfml-bounceball/build/CMakeFiles/edit_cache.dir
-/home/gangd0dan/sfml-bounceball/build/CMakeFiles/rebuild_cache.dir
