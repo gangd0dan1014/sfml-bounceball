@@ -1,7 +1,34 @@
-#include <iostream>
+#include <SFML/Graphics.hpp>
+
+#include "Ball.hpp"
 
 int main() {
 
-    std::cout << "Hello World" << std::endl;
+    sf::RenderWindow window;
+    window.create(sf::VideoMode(2048.f, 1024.f), "Bounce Ball");
 
+    sf::Event event;
+    sf::Clock clock;
+    float deltaTime;
+
+    Ball ball = Ball(sf::Vector2f(1024.f, 512.f));
+
+    while (window.isOpen()) {
+
+        deltaTime = clock.restart().asSeconds();
+
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            }
+        }
+
+        window.clear();
+
+        // 공의 위치 업데이트
+        ball.updatePosition(deltaTime);
+        window.draw(ball);
+
+        window.display();
+    }
 }

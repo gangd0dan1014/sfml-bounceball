@@ -81,12 +81,12 @@ clean: CMakeFiles/bounceball.dir/clean
 CMakeFiles/bounceball.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bounceball.dir/build.make CMakeFiles/bounceball.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bounceball.dir/build.make CMakeFiles/bounceball.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gangd0dan/sfml-bounceball/build/CMakeFiles --progress-num=1,2 "Built target bounceball"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gangd0dan/sfml-bounceball/build/CMakeFiles --progress-num=1,2,3 "Built target bounceball"
 .PHONY : CMakeFiles/bounceball.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/bounceball.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gangd0dan/sfml-bounceball/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gangd0dan/sfml-bounceball/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/bounceball.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/gangd0dan/sfml-bounceball/build/CMakeFiles 0
 .PHONY : CMakeFiles/bounceball.dir/rule
