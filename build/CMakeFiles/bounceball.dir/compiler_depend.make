@@ -298,7 +298,11 @@ CMakeFiles/bounceball.dir/src/Ball.cpp.o: ../src/Ball.cpp \
   /usr/include/SFML/Graphics/Glsl.inl \
   /usr/include/SFML/Graphics/Sprite.hpp \
   /usr/include/SFML/Graphics/Text.hpp \
-  /usr/include/SFML/Graphics/VertexBuffer.hpp
+  /usr/include/SFML/Graphics/VertexBuffer.hpp \
+  ../include/Block.hpp \
+  /usr/include/c++/11/iostream \
+  /usr/include/c++/11/istream \
+  /usr/include/c++/11/bits/istream.tcc
 
 CMakeFiles/bounceball.dir/src/Block.cpp.o: ../src/Block.cpp \
   /usr/include/stdc-predef.h \

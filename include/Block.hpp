@@ -16,6 +16,7 @@ class Block : public sf::Drawable, public sf::Transformable {
         sf::Sprite sprite;
         sf::RenderTexture renderTexture;
         sf::Texture texture;
+        sf::FloatRect boundary;
 
         sf::Vector2f position;
         sf::Vector2i blockCount;

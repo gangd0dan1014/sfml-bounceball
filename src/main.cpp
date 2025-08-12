@@ -2,6 +2,8 @@
 #include "Block.hpp"
 #include "Ball.hpp"
 
+#include <vector>
+
 int main() {
 
     sf::RenderWindow window;
@@ -23,6 +25,15 @@ int main() {
                 window.close();
             }
         }
+
+        // 좌우 이동 부분
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+            ball.moveLeft(deltaTime);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+            ball.moveRight(deltaTime);
+        }
+
 
         window.clear();
         window.draw(backGround);
