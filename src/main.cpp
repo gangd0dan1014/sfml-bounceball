@@ -1,8 +1,10 @@
 #include <SFML/Graphics.hpp>
+#include <vector>
+
 #include "Block.hpp"
 #include "Ball.hpp"
+#include "StageManager.hpp"
 
-#include <vector>
 
 int main() {
 
@@ -15,6 +17,9 @@ int main() {
 
     BackGround backGround = BackGround();
     Ball ball = Ball(sf::Vector2f(1024.f, 512.f));
+
+    StageManager stageManager = StageManager("assets/stages.json");
+    Stage& stage = stageManager.getStage(0);
 
     while (window.isOpen()) {
 
@@ -36,7 +41,14 @@ int main() {
 
 
         window.clear();
+
+        // 배경 그리기
         window.draw(backGround);
+
+        // 맵 그리기
+        for (const auto& block : stage.blockList) {
+            window.draw(*block);
+        }
 
         ball.updatePosition(deltaTime);
         window.draw(ball);

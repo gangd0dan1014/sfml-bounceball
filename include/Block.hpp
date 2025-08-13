@@ -64,5 +64,5 @@ class Straight : public Block {
 
 class Star : public Block {
     public:
-        Star(int x, int y) : Block(x,y,1,1,"assets/images/star.jpg") {}
+        Star(int x, int y) : Block(x,y,1,1,"assets/images/star.png") {}
 };

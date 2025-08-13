@@ -15,7 +15,7 @@ void Ball::initSetting() {
     // sf::CircleShape 기본 세팅
     ball.setRadius(16.f);
     ball.setOrigin(sf::Vector2f(16.f, 16.f));
-    ball.setFillColor(sf::Color::Cyan);
+    ball.setFillColor(sf::Color(102,153,204));
     ball.setPosition(position);
 }
 
