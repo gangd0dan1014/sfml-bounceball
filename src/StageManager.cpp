@@ -32,7 +32,7 @@ void StageManager::loadFromJson() {
             }
             else if (block["type"].get<std::string>().compare("Star") == 0) {
                 stage.blockList.push_back(
-                    std::make_unique<Star>(block["x"].get<int>(), block["y"].get<int>())
+                    std::make_unique<Star>(block["x"].get<int>(), block["y"].get<int>())  
                 );
             }
             else if (block["type"].get<std::string>().compare("Jump") == 0) {

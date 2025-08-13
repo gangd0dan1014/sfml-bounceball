@@ -9,7 +9,7 @@
  * @brief 블럭 생성자
  */
 Block::Block(int x, int y, int width, int height, std::string image) 
-    :position(x * BLOCK_SIZE,y * BLOCK_SIZE), blockCount(width, height), imageRelativePath(image) {
+    :position(x * BLOCK_SIZE,y * BLOCK_SIZE), blockCount(width, height), imageRelativePath(image), drawable(true) {
     initSetting();
 }
 
@@ -23,6 +23,7 @@ void Block::initSetting() {
     }
     createRenderTexture();
     sprite.setPosition(position);
+    boundary = sprite.getGlobalBounds();
 }
 
 /**
@@ -42,11 +43,14 @@ void Block::createRenderTexture() {
 
     renderTexture.display();
     sprite.setTexture(renderTexture.getTexture());
-    boundary = sprite.getGlobalBounds();
 }
 
 void Block::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     states.transform *= getTransform();
     target.draw(sprite, states);
+}
+
+sf::FloatRect Block::getBoundary() {
+    return boundary;
 }
 

@@ -18,6 +18,8 @@ class Block : public sf::Drawable, public sf::Transformable {
         sf::Texture texture;
         sf::FloatRect boundary;
 
+        bool drawable;
+
         sf::Vector2f position;
         sf::Vector2i blockCount;
 
@@ -26,6 +28,15 @@ class Block : public sf::Drawable, public sf::Transformable {
         Block(int x, int y, int width, int height, std::string image);
 
         void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+        sf::FloatRect getBoundary();
+
+        void setDrawable(bool drawable) {
+            this->drawable = drawable;
+        }
+        bool getDrawable() {
+            return this->drawable;
+        }
 
 };
 

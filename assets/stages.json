@@ -6,11 +6,12 @@
             "startY" : 12,
             "blocks" : [
                 { "type": "Stone", "x": 3, "y": 14, "width": 5, "height": 1},
-                { "type": "Stone", "x": 12, "y": 8, "width": 5, "height": 1},
+                { "type": "Stone", "x": 12, "y": 10, "width": 5, "height": 1},
                 { "type": "Stone", "x": 3, "y": 3, "width": 1, "height": 5},
+                { "type": "Stone", "x": 11, "y": 5, "width": 1, "height": 5},
 
-                { "type": "Straight", "x": 18, "y": 8},
-                { "type": "Star", "x": 18, "y": 4}
+                { "type": "Jump", "x": 18, "y": 10},
+                { "type": "Star", "x": 18, "y": 6}
             ]
         },
         {
