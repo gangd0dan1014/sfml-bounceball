@@ -16,10 +16,12 @@ int main() {
     float deltaTime;
 
     BackGround backGround = BackGround();
-    Ball ball = Ball(sf::Vector2f(1024.f, 512.f));
-
+    
     StageManager stageManager = StageManager("assets/stages.json");
-    Stage& stage = stageManager.getStage(0);
+    Stage* stage = &(stageManager.getStage(0));
+    
+    Ball ball = Ball(sf::Vector2f(1024.f, 512.f));
+    ball.setStage(stage);
 
     while (window.isOpen()) {
 
@@ -46,8 +48,10 @@ int main() {
         window.draw(backGround);
 
         // 맵 그리기
-        for (const auto& block : stage.blockList) {
-            window.draw(*block);
+        for (const auto& block : (*stage).blockList) {
+            if ((*block).getDrawable()) {
+                window.draw(*block);
+            }
         }
 
         ball.updatePosition(deltaTime);
