@@ -1,8 +1,8 @@
 #include "Ball.hpp"
 #include "Block.hpp"
 
-Ball::Ball(sf::Vector2f startPosition) 
-    : position(startPosition), initPosition(startPosition), velocity(0.f, 0.f), gravity(0.f, 700.f), stage(nullptr) {
+Ball::Ball() 
+    : velocity(0.f, 0.f), gravity(0.f, 700.f), stage(nullptr) {
     initSetting();
 }
 
@@ -139,6 +139,7 @@ void Ball::checkCollisionWithBlock(float dt) {
         else if (auto star = dynamic_cast<Star*>(block.get())) {
             if (star->getDrawable() && ball.getGlobalBounds().intersects((*block).getBoundary())) {
                 star->setDrawable(false);
+                stage->starCount--;
             }
         }
     }
@@ -147,11 +148,16 @@ void Ball::checkCollisionWithBlock(float dt) {
 
 /**
  * @brief 스테이지 설정
- * @details 플레이어가 현재 플레이 중인 스테이지의 정보 가져옴
+ * @details 플레이어가 현재 플레이 중인 스테이지의 정보를 가져오며, 공의 현재 상태를 초기화
  * @param stage
  */
 void Ball::setStage(Stage* stage) {
     this->stage = stage;
+    initPosition = stage->startPosition;
+    position = initPosition;
+    ball.setPosition(initPosition);
+    setVelocityX(0.f);
+    setVelocityY(0.f);
 }
 
 /**
