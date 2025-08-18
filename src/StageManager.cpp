@@ -65,7 +65,17 @@ void StageManager::loadFromJson() {
             }
             else if (block["type"].get<std::string>().compare("Straight") == 0) {
                 stage.blockList.push_back(
-                    std::make_unique<Straight>(block["x"].get<int>(), block["y"].get<int>())
+                    std::make_unique<Straight>(block["x"].get<int>(), block["y"].get<int>(), block["isRight"].get<bool>())
+                );
+            }
+            else if (block["type"].get<std::string>().compare("Needle") == 0) {
+                stage.blockList.push_back(
+                    std::make_unique<Needle>(block["x"].get<int>(), block["y"].get<int>(), block["width"].get<int>())
+                );
+            }
+            else if (block["type"].get<std::string>().compare("Breakable") == 0) {
+                stage.blockList.push_back (
+                    std::make_unique<Breakable>(block["x"].get<int>(), block["y"].get<int>())
                 );
             }
         }
@@ -105,7 +115,17 @@ void StageManager::resetStage(int stageNumber) {
         }
         else if (block["type"].get<std::string>().compare("Straight") == 0) {
             stage.blockList.push_back(
-                std::make_unique<Straight>(block["x"].get<int>(), block["y"].get<int>())
+                std::make_unique<Straight>(block["x"].get<int>(), block["y"].get<int>(), block["isRight"].get<bool>())
+            );
+        }
+        else if (block["type"].get<std::string>().compare("Needle") == 0) {
+            stage.blockList.push_back(
+                std::make_unique<Needle>(block["x"].get<int>(), block["y"].get<int>(), block["width"].get<int>())
+            );
+        }
+        else if (block["type"].get<std::string>().compare("Breakable") == 0) {
+            stage.blockList.push_back (
+                std::make_unique<Breakable>(block["x"].get<int>(), block["y"].get<int>())
             );
         }
     }

@@ -7,7 +7,10 @@
 
 /*
     해야할 일
-    1. 스테이지 누르면 스테이지 넘어가기 구현
+    1. 블럭 추가하기
+    2. 스테이지 더 만들기
+    3. 공과의 상호작용 추가하기
+    4. 버튼 상속 버전으로 바꾸기 like 블럭
 */
 
 int main() {
@@ -62,6 +65,11 @@ int main() {
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
                 ball.moveRight(deltaTime);
+            }
+            
+            // Straight 이동 부분
+            if (ball.getIsStraight()) {
+                ball.moveStraight(deltaTime);
             }
 
             // 배경 그리기
