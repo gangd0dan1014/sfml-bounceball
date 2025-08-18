@@ -8,8 +8,8 @@
  * @param image 블럭에 적용될 이미지 상대 경로
  * @brief 블럭 생성자
  */
-Block::Block(int x, int y, int width, int height, std::string image) 
-    :position(x * BLOCK_SIZE,y * BLOCK_SIZE), blockCount(width, height), imageRelativePath(image), drawable(true) {
+Block::Block(int x, int y, int width, int height, std::string image, bool half) 
+    :position(x * BLOCK_SIZE,y * BLOCK_SIZE), blockCount(width, height), imageRelativePath(image), drawable(true), half(half) {
     initSetting();
 }
 
@@ -22,7 +22,13 @@ void Block::initSetting() {
         std::cout << imageRelativePath << ' ' << "이미지 로딩 실패";
     }
     createRenderTexture();
-    sprite.setPosition(position);
+    
+    if (!half) {
+        sprite.setPosition(position);
+    }
+    else {
+        sprite.setPosition(position + sf::Vector2f(0,32.f));
+    }
     boundary = sprite.getGlobalBounds();
 }
 
@@ -31,13 +37,27 @@ void Block::initSetting() {
  * @details 블럭을 가상공간에 그리고, 저장하는 함수
  */
 void Block::createRenderTexture() {
-    renderTexture.create(blockCount.x * BLOCK_SIZE , blockCount.y * BLOCK_SIZE);
+    
+    if (half) {
+        renderTexture.create(blockCount.x * BLOCK_SIZE , blockCount.y * HALF_BLOCK_SIZE);
 
-    for (int y = 0; y < blockCount.y; y++) {
-        for (int x = 0; x < blockCount.x; x++) {
-            sf::Sprite temp(texture);
-            temp.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
-            renderTexture.draw(temp);
+        for (int y = 0; y < blockCount.y; y++) {
+            for (int x = 0; x < blockCount.x; x++) {
+                sf::Sprite temp(texture);
+                temp.setPosition(x * BLOCK_SIZE, (y * BLOCK_SIZE));
+                renderTexture.draw(temp);
+            }
+        }
+    }
+    else {
+        renderTexture.create(blockCount.x * BLOCK_SIZE , blockCount.y * BLOCK_SIZE);
+
+        for (int y = 0; y < blockCount.y; y++) {
+            for (int x = 0; x < blockCount.x; x++) {
+                sf::Sprite temp(texture);
+                temp.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+                renderTexture.draw(temp);
+            }
         }
     }
 
