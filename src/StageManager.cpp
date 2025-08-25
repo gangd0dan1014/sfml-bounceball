@@ -1,6 +1,3 @@
-#include <iostream>
-#include <fstream>
-
 #include "StageManager.hpp"
 
 
@@ -30,6 +27,7 @@ void StageManager::initSetting() {
             pos += sf::Vector2f(250.f, 0.f);
         }
     }
+    loadStageClearStatus();
 }
 
 /**
@@ -46,6 +44,8 @@ void StageManager::loadFromJson() {
         stage.startPosition.x = stageJson["startX"].get<int>() * 64.f;
         stage.startPosition.y = stageJson["startY"].get<int>() * 64.f;
         stage.starCount = stageJson["starCount"].get<int>();
+        stage.lock = true;
+        stage.isClear = false;
 
         for (const auto& block : stageJson["blocks"]) {
             if (block["type"].get<std::string>().compare("Stone") == 0) {
@@ -96,6 +96,8 @@ void StageManager::resetStage(int stageNumber) {
     stage.startPosition.x = stageJson["startX"].get<int>() * 64.f;
     stage.startPosition.y = stageJson["startY"].get<int>() * 64.f;
     stage.starCount = stageJson["starCount"].get<int>();
+    stage.lock = stageList[stageNumber - 1].lock;
+    stage.isClear = stageList[stageNumber - 1].isClear;
 
     for (const auto& block : stageJson["blocks"]) {
         if (block["type"].get<std::string>().compare("Stone") == 0) {
@@ -134,7 +136,7 @@ void StageManager::resetStage(int stageNumber) {
 }
 
 Stage& StageManager::getStage(int stageNumber) {
-    return stageList[stageNumber];
+    return stageList[stageNumber - 1];
 }
 
 void StageManager::setInStage(bool inStage) {
@@ -147,4 +149,77 @@ bool StageManager::getInStage() {
 
 std::vector<std::unique_ptr<Button>>& StageManager::getButtonList() {
     return this->buttonList;
+}
+
+void StageManager::markAsCleared(int stageNumber) {
+    buttonList[stageNumber - 1]->markAsCleared();
+}
+
+/**
+ * @brief 스테이지 클리여 여부를 반영하는 함수
+ * @details 게임을 시작할 때, txt 파일을 읽어서 현재 스테이지의 개방 여부를 반영
+ */
+void StageManager::loadStageClearStatus() {
+    std::ifstream stageStatusFile("assets/stageStatus.txt");
+    int index = 0;
+
+    if (stageStatusFile.is_open()) {
+        int lock, clear;
+        while (stageStatusFile >> lock >> clear) {
+            if (lock) {
+                stageList[index].lock = true;
+                stageList[index].isClear = false;
+            }
+            else {
+                stageList[index].lock = false;
+                if (clear) {    // 개방 O && 클리어 O
+                    stageList[index].isClear = true;
+                    buttonList[index]->markAsCleared();
+                }
+                else {          // 개방 O && 클리어 X
+                    stageList[index].isClear = false;
+                }
+            }
+            index++;
+        }
+    }
+    else {
+        std::cout << "File Open Error";
+    }
+}
+
+/**
+ * @brief 스테이지 클리어 여부를 확인하는 함수
+ * @details 게임을 끌 때마다, txt 파일에 stage 클리어 여부를 저장
+ */
+void StageManager::updateStageClearStatus() {
+    std::ofstream stageStatusFile("assets/stageStatus.txt");
+
+    if (stageStatusFile.is_open()) {
+        for (const auto& stage : stageList) {
+            if (stage.lock) {
+                stageStatusFile << 1 << ' ' << 0 << std::endl;
+            }
+            else {
+                if (stage.isClear) {
+                    stageStatusFile << 0 << ' ' << 1 << std::endl;
+                }
+                else {
+                    stageStatusFile << 0 << ' ' << 0 << std::endl;
+                }
+            }
+        }
+    }
+    else {
+        std::cout << "File Open Error";
+    }
+}
+
+void StageManager::unlockStage(int stageNumber) {
+    if (stageNumber == STAGE_COUNT) {
+        return;
+    }
+    else {
+        stageList[stageNumber].lock = false;
+    }
 }

@@ -3,6 +3,9 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <memory>
+#include <iostream>
+#include <fstream>
+
 
 #include "json.hpp"
 #include "Block.hpp"
@@ -23,6 +26,12 @@ typedef struct Stage {
 
     // 맵에 존재하는 별의 개수
     int starCount;
+
+    // 스테이지 개방 여부
+    bool lock;
+
+    // 스테이지 클리어 여부
+    bool isClear;
 } Stage;
 
 class StageManager {
@@ -51,5 +60,11 @@ class StageManager {
         std::vector<std::unique_ptr<Button>>& getButtonList();
 
         void resetStage(int stageNumber);
+
+        void markAsCleared(int stageNumber);
+
+        void updateStageClearStatus();
+        void loadStageClearStatus();
+        void unlockStage(int stageNumber);
 };
 

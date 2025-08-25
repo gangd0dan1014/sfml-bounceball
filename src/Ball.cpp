@@ -13,8 +13,8 @@ Ball::Ball()
 void Ball::initSetting() {
 
     // sf::CircleShape 기본 세팅
-    ball.setRadius(16.f);
-    ball.setOrigin(sf::Vector2f(16.f, 16.f));
+    ball.setRadius(12.f);
+    ball.setOrigin(sf::Vector2f(12.f, 12.f));
     ball.setFillColor(sf::Color(102,153,204));
     ball.setPosition(position);
 }
@@ -168,7 +168,7 @@ void Ball::checkCollisionWithBlock(float dt) {
             }               
         }
         else if (auto breakable = dynamic_cast<Breakable*>(block.get())) {
-            if (ball.getGlobalBounds().intersects((*block).getBoundary())) {
+            if (breakable->getDrawable() && ball.getGlobalBounds().intersects((*block).getBoundary())) {
                 if (overlapX < overlapY) {  // 좌우 충돌...더 깔끔하게 뭔가 바꿀 수 있을 거 같기도 하고
                     setIsStraight(false);
                     if (delta.x < 0) {      // 블럭 기준 왼쪽 충돌
