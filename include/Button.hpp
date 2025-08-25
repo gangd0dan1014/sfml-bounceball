@@ -26,4 +26,8 @@ class Button : public sf::Drawable, public sf::Transformable {
         int getStageNumber() {
             return this->number;
         }
+
+        void markAsCleared() {
+            this->text.setFillColor(sf::Color::Yellow);
+        }
 };

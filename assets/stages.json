@@ -6,37 +6,99 @@
             "startY" : 8,
             "starCount" : 2,
             "blocks" : [
-                { "type": "Stone", "x": 3, "y": 14, "width": 5, "height": 1},
-                { "type": "Stone", "x": 12, "y": 10, "width": 5, "height": 1},
-                { "type": "Stone", "x": 3, "y": 3, "width": 1, "height": 5},
-
-                { "type": "Jump", "x": 12, "y": 9},
-                { "type": "Jump", "x": 18, "y": 10},
-
-                { "type": "Needle", "x":5, "y":13, "width":1},
-
-                { "type": "Breakable", "x":8, "y":11},
-
-                { "type": "Straight", "x":20, "y":12, "isRight":true},
-                { "type": "Straight", "x":21, "y":13, "isRight":false},                
-
-                { "type": "Star", "x": 18, "y": 6},
-                { "type": "Star", "x": 3, "y": 13}                
+                { "type": "Stone", "x": 10, "y": 12, "width": 12, "height": 1},
+                { "type": "Stone", "x": 24, "y": 11, "width": 2, "height": 1},
+                { "type": "Stone", "x": 6, "y": 11, "width": 2, "height": 1},
+                
+                { "type": "Star", "x": 6, "y": 10},
+                { "type": "Star", "x": 25, "y" : 10}
             ]
         },
         {
             "stageNumber" : 2,
-            "startX" : 16,
-            "startY" : 8,
+            "startX" : 3,
+            "startY" : 13,
+            "starCount" : 5,
+            "blocks" : [
+                { "type": "Stone", "x":0, "y":8, "width":1, "height":8},
+                { "type": "Stone", "x":1, "y":15, "width":5, "height":1},
+                { "type": "Stone", "x":17, "y":6, "width":3, "height": 1},
+
+                { "type": "Jump", "x":8, "y":15},
+                { "type": "Jump", "x":11, "y":12},
+                { "type": "Jump", "x":14, "y": 9},
+                { "type": "Jump", "x":22, "y":9},
+
+                { "type": "Star", "x":29, "y":9},
+                { "type": "Star", "x":29, "y":10},
+                { "type": "Star", "x":29, "y":11},
+                { "type": "Star", "x":29, "y":12},
+                { "type": "Star", "x":29, "y":13}
+            ]  
+        },
+        {
+            "stageNumber" : 3,
+            "startX" : 28,
+            "startY" : 2,
             "starCount" : 1,
             "blocks" : [
-                { "type": "Stone", "x": 1, "y": 1, "width": 5, "height": 1},
-                { "type": "Stone", "x": 4, "y": 4, "width": 5, "height": 1},
-                { "type": "Stone", "x": 8, "y": 8, "width": 1, "height": 5},
+                { "type": "Stone", "x":25, "y":4, "width":4, "height":1},
 
-                { "type": "Jump", "x": 18, "y": 4},
-                { "type": "Star", "x": 16, "y": 12}
-            ]  
+                { "type": "Breakable", "x":18, "y":14},
+                { "type": "Breakable", "x":19, "y":14},
+                { "type": "Breakable", "x":20, "y":14},
+                { "type": "Breakable", "x":21, "y":14},
+                { "type": "Breakable", "x":22, "y":14},
+                { "type": "Breakable", "x":23, "y":14},
+                { "type": "Breakable", "x":24, "y":14},
+                { "type": "Breakable", "x":25, "y":14},
+
+                { "type": "Straight", "x":30, "y":14, "isRight":false},
+
+                { "type": "Jump", "x":27, "y":13},
+
+                { "type": "Needle", "x":29, "y":10, "width":1},
+                { "type": "Needle", "x":29, "y":11, "width":1},
+                { "type": "Needle", "x":29, "y":12, "width":1},
+                { "type": "Needle", "x":29, "y":13, "width":1},
+                { "type": "Needle", "x":31, "y":10, "width":1},
+                { "type": "Needle", "x":31, "y":11, "width":1},
+                { "type": "Needle", "x":31, "y":12, "width":1},
+                { "type": "Needle", "x":31, "y":13, "width":1},
+
+                { "type": "Star", "x":1, "y":14}
+            ]          
+        },
+        {
+            "stageNumber" : 4,
+            "startX" : 4,
+            "startY" : 6,
+            "starCount" : 7,
+            "blocks" : [       
+                { "type": "Stone", "x":3, "y":8, "width":3, "height":1},
+
+                { "type": "Breakable", "x":8, "y":8},
+                { "type": "Breakable", "x":11, "y":8},
+                { "type": "Breakable", "x":14, "y":8},
+                { "type": "Breakable", "x":17, "y":8},
+                { "type": "Breakable", "x":20, "y":8},
+                { "type": "Breakable", "x":23, "y":8},
+
+                { "type": "Needle", "x":6,"y":8,"width":1},
+                { "type": "Needle", "x":9,"y":8,"width":1},
+                { "type": "Needle", "x":12,"y":8,"width":1},
+                { "type": "Needle", "x":15,"y":8,"width":1},
+                { "type": "Needle", "x":18,"y":8,"width":1},
+                { "type": "Needle", "x":21,"y":8,"width":1},
+
+                { "type": "Star", "x":6, "y":7},
+                { "type": "Star", "x":9, "y":7},
+                { "type": "Star", "x":12, "y":7},
+                { "type": "Star", "x":15, "y":7},
+                { "type": "Star", "x":18, "y":7},
+                { "type": "Star", "x":21, "y":7},
+                { "type": "Star", "x":24, "y":7}
+            ]
         }
     ]
 }
